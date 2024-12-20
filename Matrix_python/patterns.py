@@ -293,3 +293,6 @@ d = dict()
 for i in range(0, len(a)):
     d[a[i]] = b[i]
 print("Flattened dictionary : ",d)
+
+
+
