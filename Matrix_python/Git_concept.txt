@@ -1,0 +1,175 @@
+git is a version control system:
+
+* version control system is a TOOL that helps to track changes in code.
+
+- free and open source
+- fast and scalable
+
+Github is a website that allows developers to store and manage their code using Git.
+
+---
+
+1. In GitHub (or Git), the process is simple: first, you add the changes, and then you commit them.
+
+--Adding Changes (Staging):
+Any files or code you modify need to be added to the staging area first. You do this using the git add command.
+Example: git add filename.txt
+OR
+To add all changes: git add .
+
+
+--Committing Changes:
+Once the changes are staged or add, you commit them with a message explaining what you did.
+Example: git commit -m "Your commit message"
+
+**Note: git or github saves the history of code it means it means(commit).
+
+
+Steps in Order:
+git config --global user.name "My name"
+git config --global user.email "ar@gmail.com"
+git config --list(list user.name, user.email and credential helper(its store credential like user and email data)
+
+Use git add to stage your changes.
+Use git commit to save them to the repository.
+
+
+~ -> meaning we are in root directory or folder
+
+
+---Clone and Status:
+
+clone: cloning a repo on our local machine.
+-git clone is used when you want to create a copy of an existing remote repository (like a project on GitHub) on your local machine.
+-It downloads the entire project (code, history, branches) from the remote repository to your computer.
+-It creates a local version of the project on your computer and links it to the remote repository so you can sync changes later.
+- After git clone, you can push, pull, and commit changes, just like with git remote
+- Clones the repository and automatically sets up the remote connection for you.
+
+Eg: git clone https://github.com/user/repository.git
+
+---git remote :
+-git remote is used to link your local project to a remote repository.
+-It helps you connect your local repository to a remote one (like GitHub) so that you can push and pull changes.
+
+Eg: git remote add origin https://github.com/user/repository.git
+
+---Status:
+-display the state of code.
+Eg: git status
+
+The git status command shows the current state of the repository. It helps you understand which files are:
+
+1.Modified: Files that have been changed.
+2.Untracked: Files that are new and haven't been added to Git yet. These are new files that are not yet tracked by Git.
+They are added to the working directory but haven't been added to the staging area for Git to track.
+
+3.Staged: Files that are ready to be committed.
+
+4.Unstaged: Files that have changes but haven't been added to the staging area yet.
+it means that you've made modifications to files that Git is already tracking,
+but those changes haven't been added to the staging area yet.
+You can stage the changes by using: git add.
+After staging, the changes are ready to be committed.
+
+
+
+to verify remote:
+git remote -v
+
+to verify branch
+git branch
+
+to rename branch
+git branch -M (new_name)
+
+git push -u origin main
+This command is used to push your local changes to a remote repository on GitHub and set the upstream for your branch.
+
+-u (or --set-upstream):
+The -u flag is shorthand for --set-upstream.
+It tells Git to link your local branch to the remote branch you're pushing to (in this case, origin/main).
+This creates a relationship between your local branch and the remote branch, so in the future,
+you can just use git push or git pull without specifying the remote (origin) and branch (main). Git will know which remote branch to push to or pull from automatically.
+Eg:
+
+The first time you push, you use:
+git push -u origin main
+This pushes your local changes to the main branch on GitHub and sets the upstream branch so that you don’t have to specify the remote (origin) and branch (main) in future pushes or pulls.
+
+After the first push, you can simply run:
+git push
+
+
+*Switching from one branch to another in Git is done using the git checkout or git switch command
+git checkout <branch_name>
+or git switch <branch_name>
+
+EG:
+git branch
+# Output:
+# * main --> you are in current branch * means
+#   feature-branch
+
+# Switch to the feature-branch
+git checkout feature-branch
+# OR
+git switch feature-branch
+
+# Check again
+git branch
+# Output:
+#   main
+# * feature-branch
+
+-- git checkout <-branch name-> (navigate to new branch)
+
+-- git checkout -b <- new branch name-> (to create new branch name and navigate to new branch)
+
+--git branch -d <--to delete branch name-->
+
+*** Git Diff:
+
+difference Between Two Commits:
+Compares changes between two specific commits.
+--git diff <commit1> <commit2>
+
+Between Branches:
+
+Compares the differences between two branches.
+--git diff <branch1> <branch2>
+
+Compares the changes in your working directory with the staging area.
+Shows what has not been staged yet.
+--git diff
+
+
+* git log : shows all the commits
+
+
+
+A fork is a copy of someone else's Git repository, but it’s stored in your own GitHub (or Git hosting) account.
+It allows you to make changes to the code independently without affecting the original project.
+
+
+1.Copy, Not Directly Connected:
+
+A fork is like creating a separate version of the project.
+Changes you make in your fork don’t affect the original repository unless you request them to be merged (via a pull request).
+
+2.Independent Workspace:
+You can modify, experiment, or add new features in your forked repository without worrying about breaking the original project.
+
+Eg:
+1.You find a cool project on GitHub (original-owner/repo).
+2.You click Fork.
+3.GitHub creates a copy in your account (your-username/repo).
+
+4.You clone your fork and work on it locally:
+git clone https://github.com/your-username/repo.git
+
+5.After improving the code, push it to your fork:
+git push origin main
+
+To share your improvements with the original project, submit a pull request (i.e:PR request).
+
