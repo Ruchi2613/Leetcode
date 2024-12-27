@@ -20,17 +20,17 @@ print(a)
 3.
 '''
 Python | Check order of character in string using OrderedDict( )
-Given an input string and a pattern, check if characters in the input string 
-follows the same order as determined by characters present in the pattern. 
+Given an input string and a pattern, check if characters in the input string
+follows the same order as determined by characters present in the pattern.
 Assume there won’t be any duplicate characters in the pattern. Examples:
-Input: 
+Input:
 string = "engineers rock"
 pattern = "er";
 Output: true
-Explanation: 
+Explanation:
 All 'e' in the input string are before all 'r'.
 
-Input: 
+Input:
 string = "engineers rock"
 pattern = "gsr";
 Output: false
@@ -84,12 +84,12 @@ print("Winner:", key_max)
 '''
 Given a dictionary, perform append of keys followed by values in list.
 
-Input : test_dict = {“Gfg” : 1, “is” : 2, “Best” : 3} 
-Output : [‘Gfg’, ‘is’, ‘Best’, 1, 2, 3] 
-Explanation : All the keys before all the values in list. 
+Input : test_dict = {“Gfg” : 1, “is” : 2, “Best” : 3}
+Output : [‘Gfg’, ‘is’, ‘Best’, 1, 2, 3]
+Explanation : All the keys before all the values in list.
 
-Input : test_dict = {“Gfg” : 1, “Best” : 3} 
-Output : [‘Gfg’, ‘Best’, 1, 3] 
+Input : test_dict = {“Gfg” : 1, “Best” : 3}
+Output : [‘Gfg’, ‘Best’, 1, 3]
 Explanation : All the keys before all the values in list.
 '''
 
@@ -252,9 +252,144 @@ a, b = 50,10
 max_val = (lambda x,y : x if x > y else y)
 print(max_val(a,b))
 
+""" Handling missing keys in Python dictionaries"""
+
+ele = {'a': 5, 'c': 8, 'e': 2}
+if "q" in ele:
+    print(ele["d"])
+else:
+    print("Key not found")
 
 
 
+# 2.K’th Non-repeating Character in Python using List Comprehension and OrderedDict
+
+def str_let(strr,k):
+
+    d = {}
+
+    for x in strr:
+        if x not in d:
+            d[x] = 1
+        else:
+            d[x]+=1
+    print(d)
+
+    res = []
+    for key,val in d.items():
+        if val == 1:
+            res.append(key)
+
+    print(res)
+    for i in range(len(res)):
+        if k <= len(res):
+            return res[k-1]
+        else:
+            return "Less than k non-repeatin characters in input."
+
+print(str_let(strr='geeksforgeeks', k = 3))
+
+
+# 3. Python | Remove all duplicates words from a given sentence
+
+def remov_duplicates(input):
+    words = input.split()
+    sett = set()
+    result = []
+
+    for word in words:
+        if word not in sett:
+            sett.add(word)
+            result.append(word)
+
+    return ' '.join(result)
+
+print(remov_duplicates(input= 'Geeks for Geeks'))
 
 
 
+#4.Python Dictionary to find mirror characters in a string
+
+
+def mirror_characters(N, s):
+    mirror_dict = {
+        'a': 'z', 'b': 'y', 'c': 'x', 'd': 'w', 'e': 'v', 'f': 'u', 'g': 't', 'h': 's',
+        'i': 'r', 'j': 'q', 'k': 'p', 'l': 'o', 'm': 'n', 'n': 'm', 'o': 'l', 'p': 'k',
+        'q': 'j', 'r': 'i', 's': 'h', 't': 'g', 'u': 'f', 'v': 'e', 'w': 'd', 'x': 'c',
+        'y': 'b', 'z': 'a'
+    }
+
+    result = list(s)
+
+    for i in range(N - 1, len(s)):
+        if 'a' <= result[i] <= 'z':
+            result[i] = mirror_dict[result[i]]
+
+    return ''.join(result)
+
+
+print(mirror_characters(3, 'paradox'))  # Output: paizwlc
+
+
+#5.Python | Convert a list of Tuples into Dictionary
+
+def convert_tup_dict(input):
+
+    d = dict()
+    for stu, marks in input:
+        # d.setdefault(stu,[marks])
+        d.setdefault(stu, marks)
+    return d
+print(convert_tup_dict(input= [("Nakul", 93), ("Shivansh", 45), ("Samved", 65),
+          ("Yash", 88), ("Vidit", 70), ("Pradeep", 52)]))
+
+
+# 6.
+from collections import Counter
+
+def makeString(str1, str2):
+
+    dict1 = Counter(str1)
+    dict2 = Counter(str2)
+
+
+    result = dict1 & dict2
+    return result == dict1
+print(makeString(str1='ABHISHEKsinGH',str2='gfhfBHkooIHnfndSHEKsiAnG'))
+
+# 7.Python dictionary, set and counter to check if frequencies can become same
+
+
+def can_make_frequencies_same(s):
+    freq = {}
+    for char in s:
+        if char in freq:
+            freq[char] += 1
+        else:
+            freq[char] = 1
+    print(freq)
+
+    freq_values = list(freq.values())
+    freq_set = set(freq_values)
+
+    if len(freq_set) == 1:
+        return "Yes"
+
+    if len(freq_set) > 2:
+        return "No"
+
+    min_freq, max_freq = min(freq_set), max(freq_set)
+
+    if freq_values.count(min_freq) == 1 and min_freq == 1:
+        return "Yes"
+
+    if max_freq - min_freq == 1 and freq_values.count(max_freq) == 1:
+        return "Yes"
+
+    return "No"
+
+
+
+# print(can_make_frequencies_same("xyyz"))
+# print(can_make_frequencies_same("xyyzz"))
+print(can_make_frequencies_same("xxxxyyzz"))

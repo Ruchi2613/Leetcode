@@ -173,3 +173,46 @@ git push origin main
 
 To share your improvements with the original project, submit a pull request (i.e:PR request).
 
+
+
+-- Self Note:
+
+Check the Current Directory:
+Verify that you are in the correct directory by running:
+
+bash
+Copy code
+pwd
+This should show you the full path of your current directory. Make sure it's inside the DevTest directory you cloned.
+
+Navigate to the Correct Directory:
+If you're inside a subdirectory or a different folder, navigate to the root of the cloned repository:
+
+bash
+Copy code
+cd DevTest
+Check if .git Exists:
+Once you're in the correct directory, check if the .git folder exists:
+
+bash
+Copy code
+ls -a
+This should show a .git directory. If it's missing, the repository might not have been cloned correctly.
+
+Re-clone the Repository:
+If you don't see the .git directory or you are still facing issues, try cloning the repository again from a different directory:
+
+bash
+Copy code
+cd ..
+rm -rf DevTest  # to remove the broken clone
+git clone https://github.com/Ruchi2613/DevTest.git
+cd DevTest
+Check Git Status Again:
+After you're inside the correct directory, run:
+
+bash
+Copy code
+git status
+This should show the current status of the repository.
+
