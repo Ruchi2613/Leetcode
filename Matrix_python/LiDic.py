@@ -393,3 +393,45 @@ def can_make_frequencies_same(s):
 # print(can_make_frequencies_same("xyyz"))
 # print(can_make_frequencies_same("xyyzz"))
 print(can_make_frequencies_same("xxxxyyzz"))
+
+
+# 1.Possible Words using given characters in Python
+def charCount(input,charSet):
+    res = []
+    for x in input:
+        is_valid = True
+        for y in x:
+            if y not in charSet:
+                is_valid = False
+                break
+        if is_valid:
+            res.append(x)
+    return ' '.join(res)
+
+
+
+print(charCount(input = ['go', 'bat', 'me', 'eat', 'goal', 'boy', 'run'],
+    charSet = ['e', 'o', 'b', 'a', 'm', 'g', 'l']))
+
+
+#2.Python – Keys associated with Values in Dictionary
+
+
+def reverse_dict(test_dict):
+    res = {}
+
+    for key,value in test_dict.items():
+        for val in value:
+            if val not in res:
+                res[val] = [key]
+            else:
+                res[val].append(key)
+    return res
+
+
+print(reverse_dict(test_dict={'abc': [10, 30], 'bcd': [30, 40, 10]}))
+
+
+
+
+
