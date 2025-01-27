@@ -144,7 +144,9 @@ def quiz_application():
 
 
 quiz_application()
-#QR Generate
+
+'''QR Generator'''
+
 import qrcode
 
 def generate_qr_code():
