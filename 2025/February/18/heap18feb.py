@@ -134,6 +134,7 @@ def high_five(items):
 
     res = []
     for stu_id in sorted(d.keys()):
+        # print(stu_id)
         avg_sum = sum(d[stu_id])//5
         res.append([stu_id,avg_sum])
     return res
