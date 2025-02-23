@@ -1,4 +1,4 @@
-'''1.'''
+"""1.Minimum Amount of Time to Fill Cups"""
 import heapq
 
 
@@ -27,7 +27,7 @@ def fillCups(amount):
 print(fillCups(amount=[5,4,4]))
 
 
-'''2.2231. Largest Number After Digit Swaps by Parity'''
+'''2231. Largest Number After Digit Swaps by Parity'''
 
 
 def largestIntegar(nums):
@@ -54,7 +54,7 @@ def largestIntegar(nums):
 print(largestIntegar(nums=65875))
 
 
-'''3.'''
+'''3.Make Array Zero by Subtracting Equal Amounts'''
 
 
 def minimumOperations(nums):
