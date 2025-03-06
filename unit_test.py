@@ -1,3 +1,9 @@
+a = [[1,2],[3,4],[5,6]]
+for x in range(len(a)):
+    for y in range(len(a[x])):
+        print(a[x][y])
+
+
 b = []
 ans = [[1], [2, 3], [5, 4]]
 for x in range(len(ans)):
@@ -14,6 +20,7 @@ for x in range(len(ans)):
     else:
         b.append(a)
 print(b)
+
 
 
 # a = 123
@@ -34,3 +41,9 @@ def longestCommonPrefix(strs) -> str:
 
 
 print(longestCommonPrefix(strs=["flower", "flow", "flight"]))
+
+
+from typing import List
+from collections import deque
+
+
