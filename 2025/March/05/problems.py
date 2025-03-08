@@ -26,3 +26,24 @@ class Solution:
         return len(visited_room_track) == len(rooms)
 
 ''''''
+
+
+def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
+    dest = len(graph) - 1  # The target node
+    result = []  # List to store all paths
+    queue = deque()
+    queue.append((0, [0]))  # Start from node 0 with path [0]
+
+    while queue:
+        node, path = queue.popleft()
+
+        # If we reached the destination, add the path to results
+        if node == dest:
+            result.append(path)
+            continue
+
+        # Explore neighbors
+        for neighbor in graph[node]:
+            queue.append((neighbor, path + [neighbor]))
+
+    return result
