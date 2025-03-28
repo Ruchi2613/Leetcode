@@ -2,7 +2,7 @@ class Node:
 
     def __init__(self, val, next_node=None):
         self.value = val
-        self.next_node = next_node
+        self.next = next_node
 
 
 class SLL:
@@ -34,17 +34,14 @@ class SLL:
         if self.head is None:
             self.head = Node(value)
             return
-
         else:
 
             temp = self.head
-
-            while temp.next_node is not None:
+            while temp.next is not None:
                 temp = temp.next
 
-            temp.next_node = Node(value)
-        self.print_linked_list("append_end")
-
+            temp.next = Node(value)
+            self.print_linked_list("append_start")
     def delete_end(self):
 
         if self.head is None:
@@ -55,12 +52,12 @@ class SLL:
         cur = dummy
         prev = dummy
 
-        while cur.next_node is not None:
+        while cur.next is not None:
             prev = cur
-            cur = cur.next_node
+            cur = cur.next
 
-        prev.next_node = None
-        self.head = dummy.next_node
+        prev.next = None
+        self.head = dummy.next
 
         self.print_linked_list("delete_end")
 
@@ -69,21 +66,22 @@ class SLL:
         print(f"Printing a linked list for {name_of_operation}")
         while temp is not None:
             print(temp.value, end="\t")
-            temp = temp.next_node
+            temp = temp.next
         print()
 
-
 sll = SLL()
-
 while True:
     val = input("Enter a value: ")
     if val == "x":
         break
 
-    if " " in val:
-        op, val = val.split()
+    parts = val.split()
+
+    if len(parts) == 1:  # Handles commands like "ds" or "de"
+        op = parts[0]
+        val = None
     else:
-        op = val
+        op, val = parts
 
     if op == "as":
         sll.append_start(val)
@@ -93,25 +91,25 @@ while True:
         sll.append_end(val)
     elif op == "de":
         sll.delete_end()
-
-'234. Palindrome Linked List'
-
-def isPalindrome(head) -> bool:
-    if not head or not head.next:
-        return True
-    stack = []
-    temp = head
-
-    while temp is not None:
-        stack.append(temp.val)
-        temp = temp.next
-
-    temp = head
-    while temp is not None:
-        if temp.val != stack.pop():
-            return False
-        temp = temp.next
-
-    return True
-
-print(head=[1, 2, 2, 1])
+#
+# '234. Palindrome Linked List'
+#
+# def isPalindrome(head) -> bool:
+#     if not head or not head.next:
+#         return True
+#     stack = []
+#     temp = head
+#
+#     while temp is not None:
+#         stack.append(temp.val)
+#         temp = temp.next
+#
+#     temp = head
+#     while temp is not None:
+#         if temp.val != stack.pop():
+#             return False
+#         temp = temp.next
+#
+#     return True
+#
+# print(head=[1, 2, 2, 1])
