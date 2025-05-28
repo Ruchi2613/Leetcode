@@ -9,7 +9,22 @@ class TreeNode:
 
 class Solution:
     def trimBST(self, root: Optional[TreeNode], low: int, high: int) -> Optional[TreeNode]:
-        pass
+        def dfs(node):
+            if node is None:
+                return None
+
+            elif node.val > high:
+                return dfs(node.left)
+
+            elif node.val < low:
+                return dfs(node.right)
+
+            else:
+                node.left = dfs(node.left)
+                node.right = dfs(node.right)
+                return node
+
+        return dfs(root)
 
 if __name__ == '__main__':
     tree = Solution()
