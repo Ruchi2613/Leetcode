@@ -23,4 +23,4 @@ class next_largest_element_to_left:
 
 
 cl = next_largest_element_to_left()
-print(cl.next_largest_element(nums=[1,3,2,4]))
+print(cl.next_largest_element(nums=[1,3,2,6,4]))
