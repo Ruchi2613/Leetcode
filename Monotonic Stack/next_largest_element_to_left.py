@@ -86,8 +86,6 @@ class Test:
     @staticmethod
     def static_method():
         print("I'm a static method")
-        
-        
 Calling:
 
 t = Test()
@@ -97,8 +95,6 @@ Test.instance_method()    # ❌ Error: missing 1 required positional argument 's
 
 t.static_method()         # ✅ OK
 Test.static_method()      # ✅ OK
-
-
 '''
 
 
