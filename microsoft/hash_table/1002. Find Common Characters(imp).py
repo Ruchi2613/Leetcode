@@ -2,7 +2,7 @@ import collections
 
 
 class Solution:
-    def commonChars(self, words: List[str]) -> List[str]:
+    def commonChars(self, words):
 
         word_size = len(words)
         res = []
@@ -14,7 +14,7 @@ class Solution:
 
 
             for letter in common_character_counts.keys():
-                common_character_counts[letter] = min(common_character_counts[letter],              current_character_counts[letter])
+                common_character_counts[letter] = min(common_character_counts[letter],current_character_counts[letter])
 
 
         for letter, count in common_character_counts.items():

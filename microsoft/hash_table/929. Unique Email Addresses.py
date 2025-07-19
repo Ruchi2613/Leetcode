@@ -1,5 +1,5 @@
 class Solution:
-    def numUniqueEmails(self, emails: List[str]) -> int:
+    def numUniqueEmails(self, emails) -> int:
         # "testemail@leetcode.com"
         # ,"testemail@leetcode.com",
         # "testemail@lee.tcode.com"
