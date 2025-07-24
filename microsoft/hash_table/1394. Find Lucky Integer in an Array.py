@@ -1,5 +1,5 @@
 class Solution:
-    def findLucky(self, arr: List[int]) -> int:
+    def findLucky(self, arr) -> int:
         
         d = {}
 

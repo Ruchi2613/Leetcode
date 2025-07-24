@@ -1,5 +1,5 @@
 class Solution:
-    def countElements(self, arr: List[int]) -> int:
+    def countElements(self, arr) -> int:
         
         
         count = 0
