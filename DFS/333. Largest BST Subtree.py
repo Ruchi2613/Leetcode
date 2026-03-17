@@ -47,3 +47,26 @@ class Solution(object):
         :rtype: int
         """
         
+        def isBST(node, minv, maxv):
+            if node is None:
+                return True
+            
+            if node.val <= minv or node.val >= maxv:
+                return False
+            
+            l = isBST(node.left, minv, node.val)
+            r = isBST(node.right, node.val,maxv)
+
+            return l and r 
+
+        def cal_size(node):
+            if node is None:
+                return 0
+
+            return 1+ cal_size(node.left)+ cal_size(node.right) 
+        
+        if isBST(root, float('-inf'), float('inf')) == True:
+            return cal_size(root)
+        
+        return max(self.largestBSTSubtree(root.left),
+                   self.largestBSTSubtree(root.right))
