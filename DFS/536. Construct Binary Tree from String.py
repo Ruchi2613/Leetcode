@@ -33,11 +33,46 @@ s consists of digits, '(', ')', and '-' only.
 All numbers in the tree have value at most than 230.'''
 
 # Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+class TreeNode(object):
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 class Solution(object):
     def str2tree(self, s):
-        return
+        
+        if not s:
+            return None
+        
+        stack = []
+        number = ''
+
+        for c in s:
+            if c in '()':
+                if c =='(' and number != '':
+                    stack.append(TreeNode(int(number)))
+                    number = ''
+
+                elif c == ")":
+                    if number != '':
+                        node = TreeNode(int(number))
+                        parent = stack[-1]
+                        number = ''
+                    else:
+                        node= stack.pop()
+                        parent = stack[-1]
+
+                    if parent.left is not None:
+                        parent.right = node
+                    else:
+                        parent.left = node
+                    
+            else:
+                    number+=c
+
+
+        if number is not None:
+            stack = [TreeNode(int(number))]
+
+
+        return stack[0]
