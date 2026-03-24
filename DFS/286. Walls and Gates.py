@@ -22,6 +22,9 @@ Example 2:
 Input: rooms = [[-1]]
 Output: [[-1]]'''
 
+from collections import deque
+
+
 class Solution(object):
     def wallsAndGates(self, rooms):
         """
