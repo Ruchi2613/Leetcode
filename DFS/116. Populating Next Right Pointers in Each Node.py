@@ -36,3 +36,72 @@ You may only use constant extra space.
 The recursive approach is fine. You may assume implicit stack space does not count as extra space for this problem.'''
 
 
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val: int = 0, left: 'Node' = None, right: 'Node' = None, next: 'Node' = None):
+        self.val = val
+        self.left = left
+        self.right = right
+        self.next = next
+"""
+
+from typing import Optional
+from xml.dom import Node
+
+
+class Solution:
+    def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
+
+        #bfs:
+        # q = deque()
+        # q.append(root)
+
+        # ans = []
+
+        # if not root:
+        #     return ans
+
+        # while len(q)>0:
+
+        #     cur_len = len(q)
+
+        #     for x in range(cur_len):
+        #         node=q.popleft()
+        #         ans.append(node.val)
+
+        #         if node.left is not None:
+        #             q.append(node.left)
+
+        #         if node.left is not None:
+        #             q.append(node.left)
+
+
+        #     ans.append(int('#'))
+
+        # return ans
+
+        # ---dfs
+
+        if root is None:
+            return None
+        
+        d = {}
+        
+        def dfs(node, depth):
+            if root is None:
+                return 
+            if depth not in d:
+                d[depth] = [node]
+            else:
+                d[depth].append(node)
+            
+            dfs(node.left, depth+1)
+            dfs(node.right, depth+1)
+        dfs(root, 1)
+
+        for depth, nodes in d.items():
+            for i in range(len(nodes)-1):
+                nodes[i].next = nodes[i+1]
+            nodes[-1].next = None
+        return root
