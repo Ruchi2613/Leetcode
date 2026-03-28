@@ -49,12 +49,47 @@ class Employee:
         self.subordinates = subordinates
 """
 
+from collections import deque
 from typing import List
 
 
 class Solution:
-    def getImportance(self, employees: List['Employee'], id: int) -> int:
-        return
+    def getImportance(self, employees: List['Employee'], id: int) -> int: # type: ignore
+        
+        emp_dict = {}
+        for emp in employees:
+            emp_dict[emp.id] = emp
+
+        queue = deque([id])
+        total = 0
+
+        while len(queue)>0:
+            emp_data = queue.popleft()
+            emp = emp_dict[emp_data]
+
+            total += emp.importance
+            queue.append(emp.subordinates)
+        
+        return total
+
+        #DFS
+        # # Create a map: id -> Employee object
+        # emp_map = {emp.id: emp for emp in employees}
+        
+        # def dfs(emp_id):
+        #     emp = emp_map[emp_id]
+        #     total = emp.importance
+            
+        #     for sub_id in emp.subordinates:
+        #         total += dfs(sub_id)
+            
+        #     return total
+        
+        # return dfs(id)
+
+
+
+
     
 
 
