@@ -67,20 +67,34 @@ class Solution(object):
         :rtype: int
         """
 
-        sett = set()
-        neg = set()
+        # sett = set()
+        # neg = set()
 
-        for x in nums:
-            if x >= 0:
-                sett.add(x)
+        # for x in nums:
+        #     if x >= 0:
+        #         sett.add(x)
+        #     else:
+        #         neg.add(x)
+
+        # if len(sett)!= 0:
+        #     return sum(sett)
+        # else:
+        #     l = list(neg)
+        #     l.sort()
+        #     return l[-1]
+        # 2nd solution:
+        sum = 0
+        st = set()
+        mxNeg = float('-inf')
+        for i in range(len(nums)):
+            if nums[i] > 0:
+                st.add(nums[i])
             else:
-                neg.add(x)
-
-        if len(sett)!= 0:
-            return sum(sett)
+                mxNeg = max(mxNeg, nums[i])
+        for val in st:
+            sum += val
+        if len(st) > 0:
+            return sum
         else:
-            l = list(neg)
-            l.sort()
-            return l[-1]
-        
+            return mxNeg
 
