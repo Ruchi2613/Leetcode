@@ -39,3 +39,36 @@ All the pairs of trust are unique.
 ai != bi
 1 <= ai, bi <= n
 '''
+
+class Solution(object):
+    def findJudge(self, n, trust):
+        """
+        :type n: int
+        :type trust: List[List[int]]
+        :rtype: int
+        """
+
+        set1 = set()
+        town_set = set()
+        count = {}
+        if n == 1:
+            return 1
+        for x in range(len(trust)):
+            frnd, judge = trust[x]
+
+            set1.add(frnd)
+            town_set.add(judge)
+
+            if judge in count:
+                count[judge] += 1
+            else:
+                count[judge] = 1
+
+        for person in town_set:
+            if person not in set1:
+                if count[person] == n - 1:
+                    return person
+
+        return -1
+            
+        
