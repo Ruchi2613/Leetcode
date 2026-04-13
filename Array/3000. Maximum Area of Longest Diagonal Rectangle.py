@@ -33,3 +33,28 @@ Constraints:
 1 <= dimensions.length <= 100
 dimensions[i].length == 2
 1 <= dimensions[i][0], dimensions[i][1] <= 100'''
+
+
+class Solution(object):
+    def areaOfMaxDiagonal(self, dimensions):
+        """
+        :type dimensions: List[List[int]]
+        :rtype: int
+        """
+
+        res = float('-inf')
+
+        for x in range(len(dimensions)):
+            leng, wid = dimensions[x]
+
+            diag_len = ((leng*leng)+(wid*wid))**0.5
+
+            if diag_len > res:
+                res = diag_len
+                max_area = leng * wid
+                
+            elif diag_len == res:
+                max_area = max(max_area, leng * wid)
+
+
+        return max_area 
