@@ -64,3 +64,33 @@ Accepted
 44,174/85.6K
 Acceptance Rate
 51.6%'''
+
+
+class Solution(object):
+    def hardestWorker(self, n, logs):
+        """
+        :type n: int
+        :type logs: List[List[int]]
+        :rtype: int
+        """
+        max_time = float('-inf')
+        max_id = float('-inf')
+        starttime = 0
+
+        for i in range(len(logs)):
+            emp_id, endtime = logs[i]
+
+            diff = endtime - starttime
+
+            if max_time < diff:
+                max_time = diff
+                max_id = emp_id
+
+            
+            elif max_time == diff:
+                max_id = min(max_id, emp_id)
+
+            starttime = endtime
+
+        return max_id
+        
