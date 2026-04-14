@@ -36,3 +36,26 @@ Constraints:
 2 <= nums.length <= 100
 1 < 2 * k <= nums.length
 -1000 <= nums[i] <= 1000'''
+
+class Solution(object):
+    def hasIncreasingSubarrays(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: bool
+        """
+        
+        count = 0
+
+        for i in range(len(nums) - k + 1):
+            valid = True
+
+            for j in range(i, i + k - 1):
+                if nums[j+1] - nums[j] != 1:
+                    valid = False
+                    break
+
+            if valid:
+                count += 1
+
+        return count >= 2
