@@ -74,3 +74,39 @@ Accepted
 Acceptance Rate
 51.8%
 '''
+
+
+class Solution(object):
+    def maxDivScore(self, nums, divisors):
+        """
+        :type nums: List[int]
+        :type divisors: List[int]
+        :rtype: int
+        """
+        d = {}
+
+        for x in divisors:
+            count = 0
+
+            for y in nums:
+                if y % x == 0:
+                    count+=1
+
+            if count!= 0:
+                d[x]= count
+        
+        print(d)
+        if len(d) == 0:
+            return min(divisors)
+
+        max_val = max(d.values())
+        divi= float('inf')
+        for div, count in d.items():
+            if count == max_val:
+                divi = min(divi,div)
+
+        return divi
+
+            
+
+        
