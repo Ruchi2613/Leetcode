@@ -38,3 +38,20 @@ Accepted
 31,938/61.2K
 Acceptance Rate
 52.2%'''
+
+
+class Solution(object):
+    def missingNumber(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: int
+        """
+        n = len(arr)
+        
+        diff = (arr[-1] - arr[0]) // n
+        
+        for i in range(n - 1):
+            if arr[i+1] - arr[i] != diff:
+                return arr[i] + diff
+        
+        return arr[0]
