@@ -36,3 +36,14 @@ Accepted
 312,811/539.2K
 Acceptance Rate
 58.0%'''
+
+from typing import List
+
+
+class Solution:
+    def getCommon(self, nums1: List[int], nums2: List[int]) -> int:
+        set1 = set(nums1)
+        for num in nums2:
+            if num in set1:
+                return num
+        return -1
