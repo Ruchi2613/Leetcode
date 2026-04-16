@@ -32,3 +32,20 @@ Constraints:
 nums.length == 2 * n
 0 <= nums[i] <= 104
 nums contains n + 1 unique elements and one of them is repeated exactly n times.'''
+
+class Solution:
+    def repeatedNTimes(self, nums: List[int]) -> int:
+
+        d = {}
+        for n in nums:
+            if n not in d:
+                d[n]=1
+            else:
+                d[n]+=1
+
+        # print(d)
+
+        for k, cnt in d.items():
+            if cnt > 1:
+                return k
+
