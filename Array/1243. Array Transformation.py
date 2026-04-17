@@ -37,3 +37,31 @@ Constraints:
 
 3 <= arr.length <= 100
 1 <= arr[i] <= 100'''
+
+from ast import List
+
+
+class Solution:
+    def transformArray(self, arr: List[int]) -> List[int]:
+
+        while True:
+            is_changed = False
+            tmp = arr[:]
+
+            for i in range(1,len(arr)-1):
+                if arr[i] < arr[i+1] and arr[i]<arr[i-1]:
+                    tmp[i] = tmp[i]+1
+                elif arr[i] > arr[i+1] and arr[i] > arr[i-1]:
+                    tmp[i] = tmp[i]-1
+
+                if arr[i]!= tmp[i]:
+                    is_changed = True
+
+            
+            arr = tmp
+
+            if is_changed == False:
+                break
+
+        return arr
+                
