@@ -40,3 +40,33 @@ s only contains lower case English letters.
 shift[i].length == 2
 directioni is either 0 or 1.
 0 <= amounti <= 100'''
+
+
+from ast import List
+
+
+class Solution:
+    def stringShift(self, s: str, shift: List[List[int]]) -> str:
+        
+        temp = list(s)
+
+        l , r = 0,1
+
+        for x in shift:
+            direction, amt = x[0], x[1]
+
+            if direction == l:
+                for amount in range(amt):
+                    first_ele = temp.pop(0)
+                    temp.append(first_ele)
+            else:
+                for amount in range(amt):
+                    last_ele = temp.pop()
+                    temp.insert(0,last_ele)
+
+
+        return "".join(temp)
+                    
+
+
+        
