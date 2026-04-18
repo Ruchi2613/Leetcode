@@ -32,6 +32,9 @@ Constraints:
 1 <= g[i], s[j] <= 231 - 1
 '''
 
+from ast import List
+
+
 class Solution:
     def findContentChildren(self, g: List[int], s: List[int]) -> int:
 
