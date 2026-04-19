@@ -86,6 +86,9 @@ Accepted
 Acceptance Rate
 37.4%'''
 
+from ast import List
+
+
 class Solution:
     def isWinner(self, player1: List[int], player2: List[int]) -> int:
         
