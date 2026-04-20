@@ -29,6 +29,9 @@ Constraints:
 1 <= nums.length <= 100
 -105 <= nums[i] <= 105'''
 
+from typing import List
+
+
 class Solution:
     def countElements(self, nums: List[int]) -> int:
         mini = min(nums)
