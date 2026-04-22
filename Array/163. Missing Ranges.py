@@ -45,7 +45,6 @@ class Solution(object):
             missing_ranges.append([lower, upper])
             return missing_ranges
 
-        # Check for any missing numbers between the lower bound and nums[0].
         if lower < nums[0]:
             missing_ranges.append([lower, nums[0] - 1])
 
