@@ -33,6 +33,9 @@ nums.length == 2 * n
 0 <= nums[i] <= 104
 nums contains n + 1 unique elements and one of them is repeated exactly n times.'''
 
+from typing import List
+
+
 class Solution:
     def repeatedNTimes(self, nums: List[int]) -> int:
 
