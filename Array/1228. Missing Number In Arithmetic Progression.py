@@ -54,4 +54,4 @@ class Solution(object):
             if arr[i+1] - arr[i] != diff:
                 return arr[i] + diff
         
-        return arr[0]
+        return -1
