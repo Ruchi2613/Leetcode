@@ -47,7 +47,7 @@ class Solution:
 
         if len(nums) == 1:
             return nums[0] + 1
-        
+
         sum_n = nums[0]
 
         for i in range(1, len(nums)):

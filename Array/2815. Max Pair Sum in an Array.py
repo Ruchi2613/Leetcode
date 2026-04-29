@@ -54,6 +54,9 @@ Constraints:
 1 <= nums[i] <= 104'''
 
 
+from typing import List
+
+
 class Solution:
     def maxSum(self, nums: List[int]) -> int:
         
