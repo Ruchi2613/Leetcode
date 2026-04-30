@@ -74,3 +74,45 @@ Accepted
 Acceptance Rate
 63.6%'''
 
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
+        if not headA or not headB:
+            return None
+
+        tempa = headA
+        tempb = headB
+
+        counta = 0
+        countb = 0
+
+        while tempa is not None:
+            counta += 1
+            tempa = tempa.next
+        
+        while tempb is not None:
+            countb += 1
+            tempb = tempb.next  
+
+        diff = abs(counta-countb)
+
+        if counta>countb:
+            for i in range(diff):
+                tempa  = tempa.next
+        else:
+            for i in range(diff):
+                tempb  = tempb.next
+
+        while tempa is not None and tempb is not None:
+            if tempa == tempb:
+                return tempa
+            tempa = tempa.next
+            tempb = tempb.next
+        return None
+    
