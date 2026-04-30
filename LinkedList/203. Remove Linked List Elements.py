@@ -32,3 +32,33 @@ The number of nodes in the list is in the range [0, 104].
 0 <= val <= 50
 
 '''
+
+# Definition for singly-linked list.
+from typing import Optional
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+        
+class Solution:
+    def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+
+        local_lst = []
+
+        temp = head
+
+        while temp is not None:
+            if temp.val != val:
+                local_lst.append(temp.val)
+            temp = temp.next
+
+        ans = ListNode(0)
+        temp = ans
+
+        for ele in local_lst:
+            temp.next = ListNode(ele)
+            temp = temp.next
+
+        return ans.next
