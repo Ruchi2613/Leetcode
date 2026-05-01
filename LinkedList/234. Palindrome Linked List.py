@@ -27,3 +27,42 @@ The number of nodes in the list is in the range [1, 105].
  
 
 Follow up: Could you do it in O(n) time and O(1) space?'''
+
+
+# Definition for singly-linked list.
+from typing import Optional
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+
+        # solution 1: using list 
+        temp = head
+        local_lst = []
+
+        while temp is not None:
+            local_lst.append(temp.val)
+            temp = temp.next
+        
+        return local_lst == local_lst[::-1]
+    
+        # solution 2: using stack
+        temp = head
+        stack = []
+
+        while temp is not None:
+            stack.append(temp.val)
+            temp = temp.next
+        
+        temp = head
+        while temp is not None:
+            if temp.val != stack.pop():
+                return False
+            temp = temp.next
+        
+        return True
+    
