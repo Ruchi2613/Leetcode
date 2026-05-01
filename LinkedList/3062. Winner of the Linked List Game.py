@@ -72,3 +72,32 @@ The value of each odd-indexed node is odd.
 The value of each even-indexed node is even.
  
 '''
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def gameResult(self, head: Optional[ListNode]) -> str:
+
+        even= head
+    
+        even_score = 0
+        odd_score = 0
+
+        while even is not None:
+            odd = even.next
+            if even.val > odd.val:
+                even_score += 1
+            else:
+                odd_score += 1
+            
+            even = odd.next
+
+        if even_score > odd_score:
+            return "Even"
+        elif odd_score > even_score:
+            return "Odd"
+        else:
+            return "Tie"
