@@ -39,3 +39,32 @@ Constraints:
 
 The number of nodes in the list is in the range [1, 105].
 1 <= Node.val <= 105'''
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+class Solution:
+    def frequenciesOfElements(self, head: Optional[ListNode]) -> Optional[ListNode]:
+
+        freq = {}
+
+        temp = head
+
+        while temp is not None:
+            if temp.val in freq:
+                freq[temp.val] += 1
+            else:
+                freq[temp.val] = 1
+            temp = temp.next
+        
+        ans = ListNode(0)
+        temp = ans
+
+        for key in freq.keys():
+            temp.next = ListNode(freq[key])
+            temp = temp.next
+        
+        return ans.next
+
