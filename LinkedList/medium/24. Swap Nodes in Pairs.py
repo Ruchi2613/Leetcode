@@ -52,3 +52,34 @@ Acceptance Rate
 69.4%'''
 
 
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+class Solution:
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        
+        even = head
+        ans = ListNode(0)
+        temp = ans
+
+        while even is not None and even.next is not None:
+            odd = even.next
+
+            temp.next = ListNode(odd.val)
+            temp = temp.next
+            temp.next = ListNode(even.val)
+            temp = temp.next
+
+            even = odd.next
+
+        if even:
+            temp.next = ListNode(even.val)
+
+        return ans.next
+
+
+
+
+
