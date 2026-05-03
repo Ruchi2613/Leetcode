@@ -59,5 +59,35 @@ class Solution:
             cur_head = tail
         
         return cur_head
-        
+    
 
+    # solution 2:
+
+        if head is None and k == 0:
+            return head
+        
+        # find the length of the linked list
+        length = 1
+        dummy = head
+
+        while dummy.next is not None:
+            dummy = dummy.next
+            length += 1
+
+        # if the list is empty or k is 0, no rotation is needed
+        
+        position = k % length
+
+        if position == 0:
+            return head 
+
+        current = head
+        
+        for _ in range(length - position - 1):
+            current = current.next
+        
+        new_head = current.next
+        current.next = None
+        dummy.next = head
+
+        return new_head
