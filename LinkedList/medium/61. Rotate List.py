@@ -34,7 +34,7 @@ class ListNode:
         self.val = val
         self.next = next
 class Solution:
-    def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+    def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]: # type: ignore
 
         if head is None and k == 0:
             return head

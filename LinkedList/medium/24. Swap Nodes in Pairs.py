@@ -58,7 +58,7 @@ class ListNode:
         self.val = val
         self.next = next
 class Solution:
-    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]: # type: ignore
         
         even = head
         ans = ListNode(0)

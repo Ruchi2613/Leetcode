@@ -32,7 +32,7 @@ class ListNode:
         self.val = val
         self.next = next
 class Solution:
-    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:  
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:   # type: ignore
 
         listt = []
         d = {}
