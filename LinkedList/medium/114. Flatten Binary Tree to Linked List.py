@@ -42,7 +42,7 @@ class TreeNode:
         self.left = left
         self.right = right
 class Solution:
-    def flatten(self, root: Optional[TreeNode]) -> None:
+    def flatten(self, root: Optional[TreeNode]) -> None: # type: ignore
 
         prev = None
 
