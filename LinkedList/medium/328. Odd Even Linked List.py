@@ -38,7 +38,7 @@ The number of nodes in the linked list is in the range [0, 104].
 #         self.val = val
 #         self.next = next
 class Solution:
-    def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]: # type: ignore
 
         if head is None:
             return head
