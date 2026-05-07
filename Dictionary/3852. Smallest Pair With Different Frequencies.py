@@ -64,9 +64,6 @@ Acceptance Rate
 
 class Solution:
     def minDistinctFreqPair(self, nums: list[int]) -> list[int]:
-
-        class Solution:
-    def minDistinctFreqPair(self, nums: list[int]) -> list[int]:
         d ={}
 
         for num in nums:
