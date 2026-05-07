@@ -42,3 +42,30 @@ Accepted
 Acceptance Rate
 53.2%'''
 
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+class Solution:
+    def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]: # type: ignore
+        dummy = ListNode(0)
+        dummy.next = head
+
+        start = dummy
+        
+        while start is not None:
+            prefix_sum = 0
+            end = start.next
+
+            while end is not None:
+                prefix_sum += end.val
+
+                if prefix_sum == 0:
+                    start.next = end.next
+                    break
+                end = end.next
+            start = start.next
+
+        return dummy.next
