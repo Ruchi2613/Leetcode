@@ -67,6 +67,9 @@ Acceptance Rate
 73.5%'''
 
 
+from ast import List
+
+
 class Solution:
     def minimumDistance(self, nums: List[int]) -> int:
         
