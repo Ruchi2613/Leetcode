@@ -46,16 +46,16 @@ Accepted
 Acceptance Rate
 63.2%'''
 
+from typing import List
+
+
 class Solution:
     def missingMultiple(self, nums: List[int], k: int) -> int:
         cur = 0
         sett = set(nums)
 
         while True:
-            if cur+k not in nums:
+            if cur+k not in sett:
                 return cur+k
             else:
                 cur+=k
-
-
-        
