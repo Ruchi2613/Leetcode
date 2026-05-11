@@ -9,7 +9,7 @@ class Solution:
             else:
                 d[int(x)] = 1
 
-        mini = sys.maxsize
+        mini = sys.maxsize # type: ignore
         mini_el = 0
         
         for ele, freq in d.items():
