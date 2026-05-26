@@ -40,3 +40,19 @@ Constraints:
 
 3 <= digits.length <= 100
 0 <= digits[i] <= 9'''
+
+class Solution:
+    def findEvenNumbers(self, digits: List[int]) -> List[int]:
+
+        result = set()
+        n = len(digits)
+
+        for i in range(n):
+            for j in range(n):
+                for k in range(n):
+                    if i != j and i != k and j != k:
+                        num = digits[i] * 100 + digits[j] * 10 + digits[k]
+                        if num >= 100 and num % 2 == 0:
+                            result.add(num)
+
+        return sorted(result)
