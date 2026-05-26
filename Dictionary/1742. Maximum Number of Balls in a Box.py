@@ -51,3 +51,23 @@ Accepted
 Acceptance Rate
 74.9%
 '''
+class Solution:
+    def countBalls(self, lowLimit: int, highLimit: int) -> int:
+        
+        d = {}
+
+        for x in range(lowLimit, highLimit+1):
+            sum_y = 0
+            for y in str(x):
+                sum_y += int(y)
+
+            if sum_y not in d:
+                d[sum_y]=1
+            else:
+                d[sum_y]+=1
+
+
+        maxi = max(d.values())
+        return maxi
+
+            
