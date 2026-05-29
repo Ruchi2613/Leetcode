@@ -40,3 +40,27 @@ key contains every letter in the English alphabet ('a' to 'z') at least once.
 message consists of lowercase English letters and ' '.
  
 '''
+
+class Solution:
+    def decodeMessage(self, key: str, message: str) -> str:
+        
+        d = {}
+        starting_point = 97
+
+        for s in key:
+            if s != ' ' and s not in d:
+                d[s] = chr(starting_point)
+                starting_point += 1
+        
+        print(d)
+
+
+        op = ''
+
+        for m in message:
+            if m in d:
+                op+= d[m]
+            elif m == ' ':
+                op+= ' '
+        
+        return op
