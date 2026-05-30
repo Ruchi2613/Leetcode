@@ -40,6 +40,9 @@ distance.length == 26
 0 <= distance[i] <= 50'''
 
 
+from typing import List
+
+
 class Solution:
     def checkDistances(self, s: str, distance: List[int]) -> bool:
         
