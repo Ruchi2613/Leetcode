@@ -38,6 +38,9 @@ Constraints:
 1 <= nums[i], original <= 1000'''
 
 
+from typing import List
+
+
 class Solution:
     def findFinalValue(self, nums: List[int], original: int) -> int:
 
