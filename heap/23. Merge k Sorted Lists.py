@@ -56,6 +56,9 @@ Acceptance Rate
 #         self.val = val
 #         self.next = next
 import heapq
+from typing import List, Optional
+
+from Beginner.heap1 import ListNode
 
 
 class Solution:
