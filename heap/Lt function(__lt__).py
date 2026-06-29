@@ -9,6 +9,7 @@ class Box:
     
 
 A = Box(5)
+
 B = Box(10)
 
 print(A < B)  # True
