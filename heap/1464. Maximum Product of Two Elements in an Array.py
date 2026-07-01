@@ -25,6 +25,7 @@ Output: 12'''
 
 
 import heapq
+from typing import List
 
 
 class Solution:
