@@ -54,7 +54,6 @@ class Solution:
         counter = 0
 
         while sum(cp_amt) > 0:
-
             cp_amt.sort()
 
             if cp_amt[2] > 0:
