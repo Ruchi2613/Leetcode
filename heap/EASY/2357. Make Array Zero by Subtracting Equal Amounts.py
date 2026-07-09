@@ -28,6 +28,7 @@ Explanation: Each element in nums is already 0 so no operations are needed.
 
 import heapq
 import sys
+from typing import List
 
 
 class Solution:
