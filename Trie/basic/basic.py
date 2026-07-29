@@ -161,6 +161,66 @@ def move_zeros(nums):
 print(move_zeros(nums = [0, 1, 0, 3, 12]))
 
 
+'''Binary search'''
+def binary_search_iterative(arr: list[int], target: int) -> int:
+    """
+    Performs iterative binary search on a sorted list.
+    Returns the index of target if found, otherwise -1.
+    """
+    left, right = 0, len(arr) - 1
+
+    while left <= right:
+        mid = left + (right - left) // 2
+
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1  
+
+    return -1  
 
 
+## Section 7 — Tuples (Q91–Q97)
 
+'''91. 🟢 Create a tuple, print its length, and access elements by index and by negative index.'''
+
+# 1. Create a tuple
+a = (10, 20, 30, 40, 50)
+
+# 2. Print its length
+print("Length of tuple:", len(a))
+
+# 3. Access elements by positive index (0-based, left to right)
+print("First element (a[0]):", a[0])
+print("Third element (a[2]):", a[2])
+
+# 4. Access elements by negative index (right to left)
+print("Last element (a[-1]):", a[-1])
+print("Second to last element (a[-2]):", a[-2])
+
+
+'''92. 🟢 Show that a tuple is immutable: try to modify an element and print the error message you get.'''
+
+a = (10,20,30)
+
+a[0]= 100
+print(a)
+'''Traceback (most recent call last):
+  File "/Users/aduru/Desktop/Leetcode/DFS/Trie/basic/basic.py", line 208, in <module>
+    a[0]= 100
+    ~^^^
+TypeError: 'tuple' object does not support item assignment'''
+
+
+# 1. Create a tuple
+my_tuple = (10, 20, 30)
+
+# 2. Try to modify an element
+try:
+    my_tuple[0] = 99  # Attempting to reassign the first element
+except TypeError as e:
+    # 3. Catch and print the exact error message
+    print("Caught expected error:")
+    print(f"{type(e)}: {e}")
