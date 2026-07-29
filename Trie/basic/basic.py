@@ -116,3 +116,51 @@ def merge_sorted_lists(list1, list2):
     return ans
 
 print(merge_sorted_lists(a, b))  # Output: [1, 2, 3, 4, 5, 6, 7, 8]
+
+
+''' 85. 🟡 Find all pairs in a list that sum to a target value.'''
+
+
+def find_pairs_with_sum(numbers, target):
+
+    seen = {}
+    pairs = []
+
+    for num in numbers:
+        complement = target - num
+
+        if complement in seen:
+            pairs.append((complement, num))
+        else:
+            seen[num] = True
+
+    return pairs
+
+print(find_pairs_with_sum(numbers = [2, 7, 11, 15, 3, 6], target = 9))  # Output: [(2, 7), (3, 6)]
+
+
+
+''' 86. 🟡 Move all zeros in a list to the end while preserving the order of the non-zero elements.'''
+
+
+def move_zeros(nums):
+
+    """
+    Moves all zeros in-place to the end while maintaining 
+    the relative order of non-zero elements.
+    """
+    check_zero = 0
+
+    # Step 1: Move all non-zero elements forward
+    for i in range(len(nums)):
+        if nums[i] != 0:
+            nums[check_zero], nums[i] = nums[i], nums[check_zero]
+            check_zero += 1
+    return nums
+
+print(move_zeros(nums = [0, 1, 0, 3, 12]))
+
+
+
+
+
