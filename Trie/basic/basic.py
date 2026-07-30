@@ -203,24 +203,193 @@ print("Second to last element (a[-2]):", a[-2])
 
 '''92. 🟢 Show that a tuple is immutable: try to modify an element and print the error message you get.'''
 
-a = (10,20,30)
+# a = (10,20,30)
 
-a[0]= 100
-print(a)
-'''Traceback (most recent call last):
-  File "/Users/aduru/Desktop/Leetcode/DFS/Trie/basic/basic.py", line 208, in <module>
-    a[0]= 100
-    ~^^^
-TypeError: 'tuple' object does not support item assignment'''
+# a[0]= 100
+# print(a)
+# '''Traceback (most recent call last):
+#   File "/Users/aduru/Desktop/Leetcode/DFS/Trie/basic/basic.py", line 208, in <module>
+#     a[0]= 100
+#     ~^^^
+# TypeError: 'tuple' object does not support item assignment'''
 
 
-# 1. Create a tuple
-my_tuple = (10, 20, 30)
+# # 1. Create a tuple
+# my_tuple = (10, 20, 30)
 
-# 2. Try to modify an element
-try:
-    my_tuple[0] = 99  # Attempting to reassign the first element
-except TypeError as e:
-    # 3. Catch and print the exact error message
-    print("Caught expected error:")
-    print(f"{type(e)}: {e}")
+# # 2. Try to modify an element
+# try:
+#     my_tuple[0] = 99  # Attempting to reassign the first element
+# except TypeError as e:
+#     # 3. Catch and print the exact error message
+#     print("Caught expected error:")
+#     print(f"{type(e)}: {e}")
+
+
+
+'''93. 🟢 Unpack a tuple into separate variables. Then unpack using `*rest`.'''
+
+data = (10, 20, 30, 40, 50)
+
+point = (5, 12)
+x, y = point
+
+# 2. Extended Unpacking with *rest at the end
+first, second, *rest = data
+
+print("Unpacking with *rest at the end:")
+print(f"first  = {first}")
+print(f"second = {second}")
+print(f"rest   = {rest}\n")
+
+
+first , *middle , last = data
+
+print("Unpacking with *rest at the middle:")
+print(f"first  = {first}")
+print(f"middle = {middle}")
+print(f"last   = {last}\n")
+
+
+
+'''96. 🟡 Sort a list of tuples `(name, score)` by score descending, then by name ascending. Use `sorted()` with a `key`.'''
+
+a = [('Alice',30),('Bob',40)]
+
+
+
+'''98. 🟢 Create a set from a list with duplicates and print the result. Note what happened to the order.
+'''
+numbers_list = [5, 2, 8, 2, 1, 5, 8, 3]
+print("Original List:", numbers_list)
+
+numbers_set = set(numbers_list)
+print("Resulting Set: ", numbers_set)
+
+ 
+# 99. 🟢 Demonstrate `add`, `update`, `remove`, `discard`, `pop`, `clear`. Explain the difference between `remove` and `discard` by triggering both on a missing element.
+
+
+fruits = {"apple", "banana"}
+# 1. update(): Add multiple elements from another collection (like a list or set)
+fruits.update(["cherry", "dragonfruit"])
+print("1. After update():", fruits)
+# Output: {'apple', 'banana', 'cherry', 'dragonfruit'}
+
+
+# 2. remove(): Removes an element (Raises KeyError if missing)
+fruits.remove("banana")
+print("2. After remove('banana'):", fruits)
+# Output: {'apple', 'cherry', 'dragonfruit'}
+
+
+# 3. discard(): Removes an element safely (Does NOTHING if missing)
+fruits.discard("apple")  # Exists -> removed
+fruits.discard("mango")  # Does NOT exist -> ignored safely, no crash!
+print("3. After discard('apple') and discard('mango'):", fruits)
+# Output: {'cherry', 'dragonfruit'}
+
+
+# 4. pop(): Removes and RETURNS an arbitrary element from the set
+removed_item = fruits.pop()
+print(f"4. After pop(): Removed '{removed_item}', Remaining set:", fruits)
+# Output: Removed 'cherry' (or 'dragonfruit'), Remaining set: {'dragonfruit'}
+
+# 5. clear(): Removes ALL elements, leaving an empty set
+fruits.clear()
+print("5. After clear():", fruits)
+# Output: set()
+
+
+A = {1, 2, 3, 4}
+B = {3, 4, 5, 6}
+
+# 1. Union: elements in either set
+print("Union (|):", A | B)
+print("Union (method):", A.union(B))
+
+# 2. Intersection: elements in both sets
+print("Intersection (&):", A & B)
+print("Intersection (method):", A.intersection(B))
+
+# 3. Difference: elements in A but NOT in B
+print("Difference (A - B):", A - B)
+print("Difference (method):", A.difference(B))
+
+# 4. Symmetric Difference: elements in A or B, but NOT both
+print("Symmetric Difference (^):", A ^ B)
+print("Symmetric Difference (method):", A.symmetric_difference(B))
+
+
+
+'''101.'''
+list1 = [1, 2, 3, 4, 5]
+list2 = [4, 5, 6, 7, 8]
+
+set1, set2 = set(list1), set(list2)
+
+# Common elements (Intersection)
+common = set1 & set2
+print("Common elements:", list(common))  # [4, 5]
+
+# Unique to list1 (Difference)
+unique_to_list1 = set1 - set2
+print("Unique to list1:", list(unique_to_list1))  # [1, 2, 3]
+
+# Unique to list2 (Difference)
+unique_to_list2 = set2 - set1
+print("Unique to list2:", list(unique_to_list2))  # [6, 7, 8]
+
+# Elements in either, but not both (Symmetric Difference)
+in_either_not_both = set1 ^ set2
+print("In either but not both:", list(in_either_not_both))  # [1, 2, 3, 6, 7, 8]
+
+
+'''102.'''
+
+A = {1, 2}
+B = {1, 2, 3, 4}
+C = {5, 6}
+
+# Subset check (A is fully contained in B)
+print("Is A a subset of B?:", A.issubset(B))  # True
+print("Is A <= B?:", A <= B)                  # True
+
+# Superset check (B contains all elements of A)
+print("Is B a superset of A?:", B.issuperset(A))  # True
+print("Is B >= A?:", B >= A)                      # True
+
+# Disjoint check (A and C share NO elements)
+print("Are A and C disjoint?:", A.isdisjoint(C))  # True
+print("Are A and B disjoint?:", A.isdisjoint(B))  # False (they share {1, 2})
+
+
+'''103.'''
+def find_duplicates(items: list) -> set:
+    seen = set()
+    duplicates = set()
+
+    for item in items:
+        if item in seen:
+            duplicates.add(item)
+        else:
+            seen.add(item)
+
+    return duplicates
+
+
+data = [1, 3, 2, 3, 4, 1, 5, 1]
+print("Duplicates found:", find_duplicates(data))  # {1, 3}
+
+'''104.'''
+# Demonstrating that {} creates a dictionary
+empty_var = {}
+print("Type of {}:", type(empty_var))  # <class 'dict'>
+
+# Correct way to make an empty set
+empty_set = set()
+print("Type of set():", type(empty_set))  # <class 'set'>
+
+
+
+'''Dictionaries were introduced into Python before sets. Since dictionaries use curly brace syntax for key-value pairs (e.g., {"key": "value"}), {} was assigned to denote an empty dictionary. When sets were added later using curly braces ({1, 2, 3}), the empty {} literal was already taken, so set() must be called explicitly for empty sets.'''
