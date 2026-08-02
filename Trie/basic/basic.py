@@ -393,3 +393,120 @@ print("Type of set():", type(empty_set))  # <class 'set'>
 
 
 '''Dictionaries were introduced into Python before sets. Since dictionaries use curly brace syntax for key-value pairs (e.g., {"key": "value"}), {} was assigned to denote an empty dictionary. When sets were added later using curly braces ({1, 2, 3}), the empty {} literal was already taken, so set() must be called explicitly for empty sets.'''
+
+
+'''106. Set Comprehension for Squares'''
+numbers = [-3, -2, -1, 0, 1, 2, 3, 4]
+
+squared_set = {x**2 for x in numbers}
+print(squared_set)
+
+
+## Section 9 — Dictionaries (Q108–Q125)
+
+'''108. '''
+marks = {"Alice": 85, 
+        "Bob": 92, 
+        "Charlie": 78
+        }
+
+print("Keys:")
+for name in marks.keys():
+    print(name)
+
+# Values
+print("\nValues:")
+for mark in marks.values():
+    print(mark)
+
+# Key-Value Pairs
+print("\nPairs:")
+for name, mark in marks.items():
+    print(f"{name}: {mark}")
+
+'''109. 🟢'''
+
+student_marks = {"Alice": 85,
+                  "Bob": 92}
+
+# Add a new key
+student_marks["Charlie"] = 78
+print("After adding Charlie:", student_marks)
+
+# Update an existing key
+student_marks["Alice"] = 90
+print("After updating Alice:", student_marks)
+
+# Delete a key
+del student_marks["Bob"]
+print("After deleting Bob:", student_marks)
+
+'''111. Iterating Over Dict with .items()'''
+
+student_scores = {"Alice": 95, "Bob": 88, "Charlie": 91}
+
+for name in student_scores.items():
+    print("pair of key and value",name)
+
+
+for name, score in student_scores.items():
+    print(f"{name} scored {score} points.")
+
+
+'''112. Checking if a Key or Value Exists'''
+
+d = {"apple": 10, "banana": 20}
+
+print("'apple' key exists?:", "apple" in d)      # True
+print("'cherry' key exists?:", "cherry" in d)    # False
+
+# Check Value (O(n) Linear Time - checks values())
+print("Value 20 exists?:", 20 in d.values())     # True
+print("Value 30 exists?:", 30 in d.values())     # False
+
+
+# 115. Finding the Name with the Highest Mark
+
+student_scores = {"Alice": 95, "Bob": 88, "Charlie": 91}
+
+max_score = max(student_scores.values())
+
+for name, score in student_scores.items():
+    if score == max_score:
+        print(f"{name} has the highest score of {score}.")
+        break 
+
+# 116. Sorting a Dict by Value (Ascending & Descending)
+scores = {"Alice": 85, "Bob": 92, "Charlie": 78}
+
+sorted_values_asc = sorted(scores.values())
+print("Sorted values (ascending):", sorted_values_asc)
+
+
+sorted_values_desc = sorted(scores.values(), reverse=True)
+print("Sorted values (descending):", sorted_values_desc)
+
+
+# 117. Inverting a Dictionary (Handling Shared Values)
+
+shared_dict = {"a": 10, 
+               "b": 20,
+               "c": 10,
+                "d": 30, 
+                "e": 20
+            }
+
+inverted_grouped = {}
+
+for key, value in shared_dict.items():
+    if value in inverted_grouped:
+        inverted_grouped[value].append(key)
+    else:
+        inverted_grouped[value] = [key]
+
+print("Inverted and grouped dictionary:", inverted_grouped)
+
+
+
+# 121. Grouping Words by First Letter
+
