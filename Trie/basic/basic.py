@@ -510,3 +510,13 @@ print("Inverted and grouped dictionary:", inverted_grouped)
 
 # 121. Grouping Words by First Letter
 
+words = ["apple", "ant", "banana", "bear", "cat", "apricot"]
+grouped = {}
+
+for word in words:
+    first_letter = word[0]
+    if first_letter not in grouped:
+        grouped[first_letter] = []
+    grouped[first_letter].append(word)
+
+print("Grouped Words:", grouped)
