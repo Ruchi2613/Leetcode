@@ -520,3 +520,263 @@ for word in words:
     grouped[first_letter].append(word)
 
 print("Grouped Words:", grouped)
+
+
+# Q122: Aggregate Sales per Product
+sales_data = [
+    ("Laptop", 1000),
+    ("Mouse", 25),
+    ("Laptop", 1200),
+    ("Keyboard", 75),
+    ("Mouse", 30),
+]
+
+aggregated_sales = {}
+
+for product, price in sales_data:
+    if product in aggregated_sales:
+        aggregated_sales[product] += price
+    else:
+        aggregated_sales[product] = price
+
+print("Aggregated Sales:", aggregated_sales)
+
+
+# Q123: Interactive Phone Book Application
+
+text = "   hello world \n\t  "
+cleaned = text.strip()
+
+print(f"'{cleaned}'")
+
+d_phone_book = {}
+
+while True:
+    print("\n--- Phone Book ---")
+    print("1. Add Contact\n2. Search Contact\n3. Delete Contact\n4. List All\n5. Exit")
+    choice = input("Enter choice (1-5): ").strip()
+
+
+    if choice == "1":
+        name = input("Enter name: ").strip()
+        phone = input("Enter phone number: ").strip()
+        d_phone_book[name] = phone
+        print(f"Added/Updated {name}.")
+
+    elif choice == "2":
+        name = input("Enter name to search: ").strip()
+        if name in d_phone_book:
+            print(f"{name}: {d_phone_book[name]}")
+        else:
+            print("Contact not found.")
+
+    elif choice == "3":
+        name = input("Enter name to delete: ").strip()
+        if name in d_phone_book:
+            del d_phone_book[name]
+            print(f"Deleted {name}.")
+        else:
+            print("Contact not found.")
+
+    elif choice == "4":
+        if not d_phone_book:
+            print("Phonebook is empty.")
+        else:
+            print("\nContacts:")
+            for name, phone in d_phone_book.items():
+                print(f"  {name}: {phone}")
+
+    elif choice == "5":
+        print("Exiting Phone Book.")
+        break
+    else:
+        print("Invalid choice. Try again.")
+
+
+
+# Q124: Dictionary Comparison Analysis
+
+d1 = {"a": 1, "b": 2, "c": 3, "d": 4}
+d2 = {"b": 2, "c": 30, "d": 4, "e": 5}
+
+k1 = d1.keys()
+k2 = d2.keys()
+
+print("Keys in d1 but not in d2:", k1 - k2)  # {'a'}
+print("Keys in d2 but not in d1:", k2 - k1)  # {'e'}
+
+common_keys = k1 & k2
+print("Common keys:", common_keys)  # {'b', 'c', 'd'}
+
+
+symmetric_diff_keys = k1^k2
+print("Keys in either d1 or d2 but not both:", symmetric_diff_keys)
+
+
+# Section 10 — Matrices and 2D Lists (Q126–Q140)
+
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+total_sum = 0
+for row in matrix:
+    sum_row = sum(row)
+    total_sum += sum_row
+
+print("Total sum of all elements in the matrix:", total_sum)  # Output: 45
+
+
+# Q129: Row and Column Sums
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+rows = len(matrix)
+cols = len(matrix[0])
+
+
+# Q129: Row and Column Sums
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+rows = len(matrix)
+cols = len(matrix[0])
+
+# Calculate row sums
+
+for row in matrix:
+    print("Row sum:", sum(row))
+
+# Calculate column sums
+for col in range(cols):
+    sum_col = 0
+    for row in range(rows):
+        sum_col += matrix[row][col]
+
+    print("Column sum:", sum_col)
+
+# Q139: Spiral Order Traversal
+
+
+def spiral_order(matrix):
+    if not matrix:
+        return []
+
+    top, bottom = 0, len(matrix) - 1
+    left, right = 0, len(matrix[0]) - 1
+    result = []
+
+    while top <= bottom and left <= right:
+        # Traverse Left -> Right
+        for j in range(left, right + 1):
+            result.append(matrix[top][j])
+        top += 1
+
+        # Traverse Top -> Bottom
+        for i in range(top, bottom + 1):
+            result.append(matrix[i][right])
+        right -= 1
+
+        # Traverse Right -> Left (if top row remains)
+        if top <= bottom:
+            for j in range(right, left - 1, -1):
+                result.append(matrix[bottom][j])
+            bottom -= 1
+
+        # Traverse Bottom -> Top (if left col remains)
+        if left <= right:
+            for i in range(bottom, top - 1, -1):
+                result.append(matrix[i][left])
+            left += 1
+
+    return result
+
+matrix = [
+    [ 1,  2,  3,  4],
+    [ 5,  6,  7,  8],
+    [ 9, 10, 11, 12]
+]
+
+print("Spiral Order:", spiral_order(matrix))
+
+
+# Q138: Rotate Square Matrix 90° Clockwise In-Place
+
+
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+n = len(matrix)
+
+# Step 1: Transpose in-place
+for i in range(n):
+    for j in range(i + 1, n):
+        matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+
+# Step 2: Reverse each row in-place
+for i in range(n):
+    matrix[i].reverse()
+
+print("Rotated Matrix 90° Clockwise:")
+for row in matrix:
+    print(row)
+
+
+
+# Q136: Check Matrix Symmetry ($A = A^T$)
+def is_symmetric(matrix):
+    rows = len(matrix)
+    cols = len(matrix[0])
+    
+    # Must be square
+    if rows != cols:
+        return False
+        
+    for i in range(rows):
+        for j in range(i + 1, cols):
+            if matrix[i][j] != matrix[j][i]:
+                return False
+    return True
+
+m1 = [
+    [1, 2, 3],
+    [2, 4, 5],
+    [3, 5, 6]
+]
+
+print("Is m1 symmetric?", is_symmetric(m1))
+
+
+# Q137: Print Border Elements
+matrix = [
+    [ 1,  2,  3,  4],
+    [ 5,  6,  7,  8],
+    [ 9, 10, 11, 12],
+    [13, 14, 15, 16]
+]
+
+rows = len(matrix)
+cols = len(matrix[0])
+
+print("Border Elements:")
+for i in range(rows):
+    for j in range(cols):
+        if i == 0 or i == rows - 1 or j == 0 or j == cols - 1:
+            print(f"{matrix[i][j]:3d}", end="")
+        else:
+            print("   ", end="")  # Pad inner elements with whitespace
+    print()
